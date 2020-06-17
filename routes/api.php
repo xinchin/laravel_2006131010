@@ -16,3 +16,14 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::post('/oauth/token', '\Laravel\Passport\Http\Controllers\AccessTokenController@issueToken');
+Route::post('/register', 'PassportController@register');
+Route::post('/login', 'PassportController@login');
+Route::post('/logout', 'PassportController@logout');
+Route::post('/refresh', 'PassportController@refresh');
+
+Route::get('test', function(){
+    return 'ok';
+  })->middleware('auth');
